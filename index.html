@@ -63,18 +63,38 @@
     <script>
     let tg = window.Telegram.WebApp;
     let submit =document.getElementById("submit");
-    let submit =document.getElementById("reset");
+    let reset = document.getElementById("reset");
     tg.expand();
 
     submit.addEventListener("click", () => {
-    let fullname = document.getElementById("fullname")
-    });
-
-    reset.addEventListener("click", () => {
+    let fullname = document.getElementById("fullname").value;
+    let address = document.getElementById("address").value;
+    let phone = document.getElementById("phone").value;
+    let type = document.getElementById("type").value;
+    let model = document.getElementById("model").value;
+    let serial = document.getElementById("serial").value;
+    let year = document.getElementById("year").value;
+    let reading = document.getElementById("reading").value;
 
     let data = {
-    name: fullname
-    }
+      fullname: fullname,
+      address: address,
+      phone: phone,
+      type: type,
+      model: model,
+      serial: serial,
+      year: year,
+      reading: reading
+    };
+
+    tg.sendData(JSON.stringify(data));
+    });
+
+
+    reset.addEventListener("click", () => {
+    tg.close();
+    });
+
     tg.sendData('JSON.stringify(data)');
 
     tg.close();
