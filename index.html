@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Форма ввода ФИО</title>
+    <title>Форма ввода</title>
   </head>
   <body>
     <form>
       <div>
-        <label for="firstname">Имя:</label>
-        <input type="text" id="firstname" name="firstname">
+        <label for="model">Модификация:</label>
+        <input type="text" id="model" name="model">
       </div>
 
       <div>
-        <label for="lastname">Фамилия:</label>
-        <input type="text" id="lastname" name="lastname">
+        <label for="serial">Заводской номер:</label>
+        <input type="text" id="serial" name="serial">
       </div>
 
       <div>
-        <label for="middlename">Отчество:</label>
-        <input type="text" id="middlename" name="middlename">
+        <label for="type">Вид счетчика:</label>
+        <select id="type" name="type">
+          <option value="electric">Электросчетчик</option>
+          <option value="water">Водосчетчик</option>
+          <option value="gas">Газовый счетчик</option>
+        </select>
       </div>
 
       <button type="submit">Отправить</button>
