@@ -3,10 +3,11 @@ form {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
   border-radius: 10px;
   font-family: Arial, sans-serif;
+  background-image: linear-gradient(to bottom, #f0f0f0, #ddd);
 }
+
 
 /* Стили для заголовка формы */
 form h2 {
@@ -29,7 +30,7 @@ select {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
   margin-bottom: 20px;
 }
 
