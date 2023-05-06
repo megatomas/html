@@ -55,47 +55,39 @@
       </div>
 
       <div>
-        <button type="submit">Отправить</button>
-        <button type="reset">Отмена</button>
+        <button type="submit" id="submit">Отправить</button>
+        <button type="reset" id="reset">Отмена</button>
+
       </div>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
     let tg = window.Telegram.WebApp;
-    let submit =document.getElementById("submit");
+    let submit = document.getElementById("submit");
     let reset = document.getElementById("reset");
+    let fullname = document.getElementById("fullname");
+    
     tg.expand();
 
     submit.addEventListener("click", () => {
-    let fullname = document.getElementById("fullname").value;
-    let address = document.getElementById("address").value;
-    let phone = document.getElementById("phone").value;
-    let type = document.getElementById("type").value;
-    let model = document.getElementById("model").value;
-    let serial = document.getElementById("serial").value;
-    let year = document.getElementById("year").value;
-    let reading = document.getElementById("reading").value;
-
-    let data = {
-      fullname: fullname,
-      address: address,
-      phone: phone,
-      type: type,
-      model: model,
-      serial: serial,
-      year: year,
-      reading: reading
-    };
-
-    tg.sendData(JSON.stringify(data));
+      let data = {
+        fullname: fullname.value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        type: document.getElementById("type").value,
+        model: document.getElementById("model").value,
+        serial: document.getElementById("serial").value,
+        year: document.getElementById("year").value,
+        reading: document.getElementById("reading").value
+      };
+      tg.sendData(JSON.stringify(data));
+      tg.close();
     });
-
 
     reset.addEventListener("click", () => {
-    tg.close();
+      tg.close();
     });
 
-    tg.sendData('JSON.stringify(data)');
 
     </script>
 
