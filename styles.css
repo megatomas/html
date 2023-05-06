@@ -8,14 +8,14 @@ form {
   font-family: Arial, sans-serif;
 }
 
-/* Стили для полей ввода */
 input[type="text"],
 input[type="tel"],
 textarea,
 select {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  padding-right: 1px;
+  margin-bottom: 5px;
   border: none;
   background-color: #fff;
   border-radius: 5px;
@@ -23,15 +23,6 @@ select {
   font-size: 16px;
 }
 
-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><path fill="%23666666" d="M.5 0L0 .5l6 7 6-7-.5-.5L6 6.333z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 10px 8px;
-}
 
 /* Стили для меток */
 label {
