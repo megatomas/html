@@ -64,21 +64,20 @@
         <button type="reset">Отмена</button>
       </div>
     </form>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-    const form = document.querySelector('form');
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = new FormData(form);
-      const response = await fetch('/form', {
-        method: 'POST',
-        body: formData
-      });
-      if (response.ok) {
-        alert('Данные успешно отправлены');
-      } else {
-        alert('Произошла ошибка при отправке данных');
-      }
+    let tg = window.Telegram.WebApp;
+    let submit =document.getElementById("submit");
+    let submit =document.getElementById("reset");
+
+    submit.addEventListener("click", () => {
+
     });
-  </script>
+
+    reset.addEventListener("click", () => {
+    tg.close();
+    });
+    </script>
+
   </body>
 </html>
