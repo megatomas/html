@@ -3,39 +3,41 @@ form {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
+  background: linear-gradient(to bottom, #f0f0f0, #c0c0c0);
   border-radius: 10px;
   font-family: Arial, sans-serif;
-  background-image: linear-gradient(to bottom, #f0f0f0, #ddd);
-}
-
-
-/* Стили для заголовка формы */
-form h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
 }
 
 /* Стили для полей ввода */
-label {
-  display: block;
-  margin-bottom: 10px;
-  color: #333;
-}
-
 input[type="text"],
+input[type="tel"],
 textarea,
 select {
   width: 100%;
   padding: 10px;
-  border-radius: 5px;
-  border: none;
-  background-color: #f5f5f5;
   margin-bottom: 20px;
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
 }
 
-input[type="file"] {
-  margin-top: 10px;
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><path fill="%23666666" d="M.5 0L0 .5l6 7 6-7-.5-.5L6 6.333z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 8px;
+}
+
+/* Стили для меток */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 /* Стили для кнопок */
@@ -48,7 +50,7 @@ button[type="reset"] {
   background-color: #333;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -56,4 +58,52 @@ button[type="reset"] {
 button[type="submit"]:hover,
 button[type="reset"]:hover {
   background-color: #555;
+}
+
+/* Выравнивание кнопок на одном уровне */
+div:last-of-type {
+  display: flex;
+  justify-content: space-between;
+}
+
+div:last-of-type button {
+  width: calc(50% - 10px);
+}
+
+/* Стили для блока с количеством проверок */
+div:last-of-type {
+  margin-bottom: 20px;
+}
+
+div:last-of-type label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+div:last-of-type label span {
+  margin-left: 5px;
+  font-weight: normal;
+}
+
+/* Стили для ошибок валидации */
+input:invalid,
+textarea:invalid,
+select:invalid {
+  box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.2);
+}
+
+/* Стили для элементов при фокусе */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 255, 0.2);
+}
+
+/* Стили для элементов при наведении */
+input:hover,
+textarea:hover,
+select:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
