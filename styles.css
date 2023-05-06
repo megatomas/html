@@ -61,21 +61,6 @@ div:last-of-type button {
   width: calc(50% - 10px);
 }
 
-/* Стили для блока с количеством проверок */
-div:last-of-type {
-  margin-bottom: 20px;
-}
-
-div:last-of-type label {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-}
-
-div:last-of-type label span {
-  margin-left: 5px;
-  font-weight: normal;
-}
 
 /* Стили для ошибок валидации */
 input:invalid,

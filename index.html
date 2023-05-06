@@ -55,11 +55,6 @@
       </div>
 
       <div>
-      <label for="proverki">Доступно проверок: <span>50</span></label>
-        <button type="balance">Пополнить</button>
-      </div>
-
-      <div>
         <button type="submit">Отправить</button>
         <button type="reset">Отмена</button>
       </div>
@@ -69,9 +64,10 @@
     let tg = window.Telegram.WebApp;
     let submit =document.getElementById("submit");
     let submit =document.getElementById("reset");
+    tg.expand();
 
     submit.addEventListener("click", () => {
-
+    let fullname = document.getElementById("fullname")
     });
 
     reset.addEventListener("click", () => {
