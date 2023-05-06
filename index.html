@@ -76,22 +76,40 @@
 
     tg.expand();
 
-    submit.addEventListener("click", () => {
-      let photo = document.getElementById("photo").files[0];
-      let data = new FormData();
-      data.append('photo', photo);
-      data.append('fullname', fullname.value);
-      data.append('address', address.value);
-      data.append('phone', phone.value);
-      data.append('type', type.value);
-      data.append('model', model.value);
-      data.append('serial', serial.value);
-      data.append('year', year.value);
-      data.append('reading', reading.value);
-      
-      tg.sendData(JSON.stringify(data));
-      tg.close();
+    submit.addEventListener("click", async () => {
+  let data = {
+    fullname: fullname.value,
+    address: document.getElementById("address").value,
+    phone: document.getElementById("phone").value,
+    type: document.getElementById("type").value,
+    model: document.getElementById("model").value,
+    serial: document.getElementById("serial").value,
+    year: document.getElementById("year").value,
+    reading: document.getElementById("reading").value
+  };
+
+  let photo = document.getElementById("photo").files[0];
+  let reader = new FileReader();
+
+  reader.onload = async () => {
+    let photo_data = reader.result.split(",")[1];
+    data.photo = photo_data;
+
+    let response = await fetch('/webhook', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
+
+    tg.sendData(await response.text());
+    tg.close();
+  };
+
+  reader.readAsDataURL(photo);
+});
+
 
     reset.addEventListener("click", () => {
       tg.close();
