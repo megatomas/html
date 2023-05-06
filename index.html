@@ -18,13 +18,45 @@
       <div>
         <label for="type">Вид счетчика:</label>
         <select id="type" name="type">
-          <option value="electric">Электросчетчик</option>
-          <option value="water">Водосчетчик</option>
-          <option value="gas">Газовый счетчик</option>
+          <option value="hot_water">Горячая вода</option>
+          <option value="cold_water">Холодная вода</option>
         </select>
       </div>
 
-      <button type="submit">Отправить</button>
+      <div>
+        <label for="year">Год выпуска:</label>
+        <input type="text" id="year" name="year">
+      </div>
+
+      <div>
+        <label for="phone">Телефон клиента:</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+
+      <div>
+        <label for="fullname">ФИО клиента:</label>
+        <input type="text" id="fullname" name="fullname">
+      </div>
+
+      <div>
+        <label for="reading">Показания:</label>
+        <input type="text" id="reading" name="reading">
+      </div>
+
+      <div>
+        <label for="address">Адрес клиента:</label>
+        <textarea id="address" name="address"></textarea>
+      </div>
+
+      <div>
+        <label for="photo">Прикрепить фото:</label>
+        <input type="file" id="photo" name="photo">
+      </div>
+
+      <div>
+        <button type="submit">Отправить</button>
+        <button type="reset">Отмена</button>
+      </div>
     </form>
   </body>
 </html>
