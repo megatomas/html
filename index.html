@@ -66,19 +66,12 @@
     let submit = document.getElementById("submit");
     let reset = document.getElementById("reset");
     let fullname = document.getElementById("fullname");
-    
+
     tg.expand();
 
     submit.addEventListener("click", () => {
       let data = {
-        fullname: fullname.value,
-        address: document.getElementById("address").value,
-        phone: document.getElementById("phone").value,
-        type: document.getElementById("type").value,
-        model: document.getElementById("model").value,
-        serial: document.getElementById("serial").value,
-        year: document.getElementById("year").value,
-        reading: document.getElementById("reading").value
+        fullname: fullname.value
       };
       tg.sendData(JSON.stringify(data));
       tg.close();
