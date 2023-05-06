@@ -64,5 +64,21 @@
         <button type="reset">Отмена</button>
       </div>
     </form>
+    <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch('/form', {
+        method: 'POST',
+        body: formData
+      });
+      if (response.ok) {
+        alert('Данные успешно отправлены');
+      } else {
+        alert('Произошла ошибка при отправке данных');
+      }
+    });
+  </script>
   </body>
 </html>
