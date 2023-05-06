@@ -7,12 +7,13 @@ button[type="submit"], button[type="reset"] {
 }
 
 form {
-  background-color: #f1f1f1;
+  background-color: #29d854;
 }
 
-#model, #serial, #type {
-  background-color: #f1f1f1;
+#fullname, #address, #phone, #type, #model, #serial, #year, #reading, #photo {
+  background-color: #6c8974;
 }
+
 
 div p {
   color: red;
