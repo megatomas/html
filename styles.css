@@ -1,0 +1,7 @@
+div {
+  margin-bottom: 20px;
+}
+
+button[type="submit"], button[type="reset"] {
+  border-radius: 10px;
+}
