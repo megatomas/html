@@ -71,6 +71,12 @@
     });
 
     reset.addEventListener("click", () => {
+
+    let data = {
+    name: fullname
+    }
+    tg.sendData('JSON.stringify(data)');
+
     tg.close();
     });
     </script>
