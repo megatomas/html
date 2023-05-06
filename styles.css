@@ -13,3 +13,7 @@ form {
 #model, #serial, #type {
   background-color: #f1f1f1;
 }
+
+div p {
+  color: red;
+}
