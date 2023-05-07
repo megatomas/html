@@ -2,25 +2,40 @@ html, body {
   height: 100%;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, #99c2a2, #1a4341);
+  border-radius: 10px;
+  padding: 20px;
+}
 
+form {
+  flex-direction: column;
+  align-items: center;
+}
 
 input[type="text"],
 textarea,
 select {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
+  width: 90%;
+  padding: 15px;
+  margin: 10px 0;
   border-radius: 5px;
   border: none;
   background-color: #F8F8F8;
   flex: 1; /* растягиваем поля по вертикали */
 }
 
+input[type="text"],
+textarea {
+  width: calc(150% - 20px);
+}
 
 button[type="submit"],
 button[type="reset"] {
   padding: 10px;
-  margin: 0; /* убираем отступы */
+  margin: 0 5px 0 0; /* добавляем отступы между кнопками и справа */
   border-radius: 5px;
   border: none;
   background-color: #5B8E7D;
@@ -28,13 +43,10 @@ button[type="reset"] {
   outline: 2px solid #1a4341;
 }
 
-button[type="submit"] {
-  margin-right: 5px; /* добавляем отступ между кнопками */
-}
-
 .buttons {
   display: flex;
   flex-direction: row;
+  margin-top: 10px; /* добавляем отступ между кнопками и полями */
 }
 
 .buttons button {
