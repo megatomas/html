@@ -9,7 +9,7 @@
       <div>
         <input type="text" id="fullname" name="fullname" placeholder="Клиент">
         <textarea id="address" name="address" placeholder="Адрес"></textarea>
-        <input type="text" id="phone" name="phone" placeholder="Телефон">
+        <input type="text" id="phone" name="phone" placeholder="Телефон" value="+7">
         <select id="type" name="type">
           <option value="hot_water">Горячая вода</option>
           <option value="cold_water">Холодная вода</option>
@@ -52,7 +52,7 @@
       return;
     }
 
-    if (phone.length < 1) {
+    if (phone.length < 12) {
       document.getElementById("error").interText = 'Ошибка в телефоне';
       return;
     }
