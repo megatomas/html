@@ -43,40 +43,40 @@
         let year = document.getElementById("year").value;
         let reading = document.getElementById("reading").value;
 
-        document.getElementById("error").textContent = ""; // очищаем сообщение об ошибке
+        document.getElementById("error").innerText = ""; // очищаем сообщение об ошибке
 
-        if (fullname.trim() === "") {
-          document.getElementById("error").textContent = "Пожалуйста, введите имя клиента";
+        if (fullname.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите имя клиента";
           return;
         }
 
-        if (address.trim() === "") {
-          document.getElementById("error").textContent = "Пожалуйста, введите адрес";
+        if (address.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите адрес";
           return;
         }
 
-        if (phone.trim().length < 12) { // проверяем, что длина телефона с добавленным "+7" равна 12
-          document.getElementById("error").textContent = "Пожалуйста, введите корректный номер телефона";
+        if (phone.length < 12) { // проверяем, что длина телефона с добавленным "+7" равна 12
+          document.getElementById("error").innerText = "Пожалуйста, введите корректный номер телефона";
           return;
         }
 
-        if (model.trim() === "") {
-          document.getElementById("error").textContent = "Пожалуйста, введите модификацию";
+        if (model.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите модификацию";
           return;
         }
 
-        if (serial.trim() === "") {
-          document.getElementById("error").textContent = "Пожалуйста, введите заводской номер";
+        if (serial.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите заводской номер";
           return;
         }
 
-        if (year.trim() === "") {
-          document.getElementById("error").textContent = "Пожалуйста, введите год выпуска";
+        if (year.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите год выпуска";
           return;
         }
 
-        if (reading.trim() === "") {
-          document.getElementById("error").textContent = "Пожалуйста, введите показания";
+        if (reading.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите показания";
           return;
         }
 
