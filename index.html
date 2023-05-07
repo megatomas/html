@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Форма ввода</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
@@ -44,9 +46,7 @@
       let tg = window.Telegram.WebApp;
       let submit = document.getElementById("submit");
       let reset = document.getElementById("reset");
-
       tg.expand();
-
     submit.addEventListener("click", () => {
         let fullname = document.getElementById("fullname").value;
         let address = document.getElementById("address").value;
@@ -56,44 +56,35 @@
         let serial = document.getElementById("serial").value;
         let year = document.getElementById("year").value;
         let reading = document.getElementById("reading").value;
-
         document.getElementById("error").innerText = ""; // очищаем сообщение об ошибке
-
         if (fullname.length < 1) {
           document.getElementById("error").innerText = "Пожалуйста, введите имя клиента";
           return;
         }
-
         if (address.length < 1) {
           document.getElementById("error").innerText = "Пожалуйста, введите адрес";
           return;
         }
-
         if (phone.length !== 12 || !/^\+7\d{10}$/.test(phone)) {
           document.getElementById("error").innerText = "Пожалуйста, введите корректный номер телефона";
           return;
         }
-
         if (model.length < 1) {
           document.getElementById("error").innerText = "Пожалуйста, введите модификацию";
           return;
         }
-
         if (serial.length < 1) {
           document.getElementById("error").innerText = "Пожалуйста, введите заводской номер";
           return;
         }
-
         if (year.length < 1) {
           document.getElementById("error").innerText = "Пожалуйста, введите год выпуска";
           return;
         }
-
         if (reading.length < 1) {
           document.getElementById("error").innerText = "Пожалуйста, введите показания";
           return;
         }
-
         let data = {
           fullname: fullname,
           address: address,
@@ -107,8 +98,6 @@
         tg.sendData(JSON.stringify(data));
         tg.close();
       });
-
-
     reset.addEventListener("click", () => {
       tg.close();
     });
