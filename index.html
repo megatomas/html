@@ -6,7 +6,7 @@
   </head>
   <body>
     <form enctype="multipart/form-data">
-      <div>
+
         <input type="text" id="fullname" name="fullname" placeholder="Клиент">
         <textarea id="address" name="address" placeholder="Адрес"></textarea>
         <input type="text" id="phone" name="phone" placeholder="Телефон" value="+7">
@@ -18,12 +18,9 @@
         <input type="text" id="serial" name="serial" placeholder="Заводской номер">
         <input type="text" id="year" name="year" placeholder="Год выпуска">
         <input type="text" id="reading" name="reading" placeholder="Показания">
-      </div>
-      <div id="error"></div>
-      <div>
+        <div id="error"></div>
         <button type="submit" id="submit">Отправить</button>
         <button type="reset" id="reset">Отмена</button>
-      </div>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -36,7 +33,7 @@
     submit.addEventListener("click", () => {
         let fullname = document.getElementById("fullname").value;
         let address = document.getElementById("address").value;
-        let phone = "+7" + document.getElementById("phone").value; // добавляем "+7" к значению поля "Телефон"
+        let phone = document.getElementById("phone").value;
         let type = document.getElementById("type").value;
         let model = document.getElementById("model").value;
         let serial = document.getElementById("serial").value;
