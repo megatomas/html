@@ -1,85 +1,45 @@
-/* Стили для формы */
+body {
+  background-color: #7ECFC0; /* цвет фона страницы */
+}
+
 form {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background: linear-gradient(to bottom, #f0f0f0, #c0c0c0);
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
+  max-width: 800px; /* максимальная ширина формы */
+  margin: 0 auto; /* центрируем форму */
+  padding: 20px; /* отступы внутри формы */
+  background: linear-gradient(to bottom, #99c2a2, #1a4341); /* градиент фона формы */
+  border-radius: 10px; /* скругляем углы формы */
 }
 
 input[type="text"],
-input[type="tel"],
-textarea,
+textarea {
+  width: 100%; /* расширяем поля ввода на всю ширину формы */
+  padding: 10px; /* отступы внутри полей ввода */
+  margin: 5px 0; /* отступы между полями ввода */
+  border-radius: 5px; /* скругляем углы полей ввода */
+  border: none; /* убираем границы полей ввода */
+  background-color: #F8F8F8; /* цвет фона полей ввода */
+}
+
 select {
-  width: 100%;
-  padding: 10px;
-  padding-right: 1px;
-  margin-bottom: 5px;
-  border: none;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
+  width: 100%; /* расширяем поле выбора на всю ширину формы */
+  padding: 10px; /* отступы внутри поля выбора */
+  margin: 5px 0; /* отступы между полями ввода */
+  border-radius: 5px; /* скругляем углы поля выбора */
+  border: none; /* убираем границы поля выбора */
+  background-color: #F8F8F8; /* цвет фона поля выбора */
 }
 
-
-/* Стили для меток */
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-/* Стили для кнопок */
 button[type="submit"],
 button[type="reset"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  padding: 10px; /* отступы внутри кнопок */
+  margin: 5px; /* отступы между кнопками */
+  border-radius: 5px; /* скругляем углы кнопок */
+  border: none; /* убираем границы кнопок */
+  background-color: #5B8E7D; /* цвет фона кнопок */
+  color: white; /* цвет текста на кнопках */
 }
 
-button[type="submit"]:hover,
-button[type="reset"]:hover {
-  background-color: #555;
-}
-
-/* Выравнивание кнопок на одном уровне */
-div:last-of-type {
-  display: flex;
-  justify-content: space-between;
-}
-
-div:last-of-type button {
-  width: calc(50% - 10px);
-}
-
-
-/* Стили для ошибок валидации */
-input:invalid,
-textarea:invalid,
-select:invalid {
-  box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.2);
-}
-
-/* Стили для элементов при фокусе */
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  box-shadow: 0px 0px 5px rgba(0, 0, 255, 0.2);
-}
-
-/* Стили для элементов при наведении */
-input:hover,
-textarea:hover,
-select:hover {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+#error {
+  color: red; /* цвет сообщения об ошибке */
+  margin-top: 10px; /* отступ сверху сообщения об ошибке */
 }
