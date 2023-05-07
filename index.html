@@ -52,7 +52,7 @@
           return;
         }
 
-        if (phone.length < 12) { // проверяем, что длина телефона с добавленным "+7" равна 12
+        if (phone.length !== 12 || !/^\+7\d{10}$/.test(phone)) {
           document.getElementById("error").innerText = "Пожалуйста, введите корректный номер телефона";
           return;
         }
