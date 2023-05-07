@@ -6,18 +6,33 @@
   </head>
   <body>
     <form enctype="multipart/form-data">
-
+        <div>
         <input type="text" id="fullname" name="fullname" placeholder="Клиент">
+        </div>
+        <div>
         <textarea id="address" name="address" placeholder="Адрес"></textarea>
+        </div>
+        <div>
         <input type="text" id="phone" name="phone" placeholder="Телефон" value="+7">
+        </div>
+        <div>
         <select id="type" name="type">
           <option value="hot_water">Горячая вода</option>
           <option value="cold_water">Холодная вода</option>
         </select>
+        </div>
+        <div>
         <input type="text" id="model" name="model" placeholder="Модификация">
+        </div>
+        <div>
         <input type="text" id="serial" name="serial" placeholder="Заводской номер">
+        </div>
+        <div>
         <input type="text" id="year" name="year" placeholder="Год выпуска">
+        </div>
+        <div>
         <input type="text" id="reading" name="reading" placeholder="Показания">
+        </div>
         <div id="error"></div>
         <div class="button-group">
             <button type="submit" id="submit">Отправить</button>
