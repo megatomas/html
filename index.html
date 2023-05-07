@@ -19,7 +19,7 @@
         <input type="text" id="year" name="year" placeholder="Год выпуска">
         <input type="text" id="reading" name="reading" placeholder="Показания">
       </div>
-
+    <div id="error"></div>
       <div>
         <button type="submit" id="submit">Отправить</button>
         <button type="reset" id="reset">Отмена</button>
@@ -41,38 +41,39 @@
     tg.expand();
 
     submit.addEventListener("click", () => {
-    if (fullname.value.trim() === "") {
-      alert("Пожалуйста, введите имя клиента");
+    document.getElementById("error").interText = '';
+    if (fullname.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в имени';
       return;
     }
 
-    if (document.getElementById("address").value.trim() === "") {
-      alert("Пожалуйста, введите адрес");
+    if (address.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в адресе';
       return;
     }
 
-    if (phone.value.trim() === "") {
-      alert("Пожалуйста, введите номер телефона");
+    if (phone.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в телефоне';
       return;
     }
 
-    if (model.value.trim() === "") {
-      alert("Пожалуйста, введите модификацию");
+    if (model.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в моделе';
       return;
     }
 
-    if (serial.value.trim() === "") {
-      alert("Пожалуйста, введите заводской номер");
+    if (serial.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в серии';
       return;
     }
 
-    if (year.value.trim() === "") {
-      alert("Пожалуйста, введите год выпуска");
+    if (year.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в годе';
       return;
     }
 
-    if (reading.value.trim() === "") {
-      alert("Пожалуйста, введите показания");
+    if (reading.length < 1) {
+      document.getElementById("error").interText = 'Ошибка в показаниях';
       return;
     }
       let data = {
