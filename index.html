@@ -77,30 +77,29 @@
     tg.expand();
 
     submit.addEventListener("click", () => {
-      let data = {
-        fullname: fullname.value,
-        address: document.getElementById("address").value,
-        phone: document.getElementById("phone").value,
-        type: document.getElementById("type").value,
-        model: document.getElementById("model").value,
-        serial: document.getElementById("serial").value,
-        year: document.getElementById("year").value,
-        reading: document.getElementById("reading").value
-      };
-
-      if (document.getElementById("photo").files.length > 0) {
-        let reader = new FileReader();
-        reader.readAsDataURL(document.getElementById("photo").files[0]);
-        reader.onload = function () {
-          data.photo = reader.result.split(',')[1];
-          tg.sendData(JSON.stringify(data));
+        let data = {
+          fullname: fullname.value,
+          address: document.getElementById("address").value,
+          phone: document.getElementById("phone").value,
+          type: document.getElementById("type").value,
+          model: document.getElementById("model").value,
+          serial: document.getElementById("serial").value,
+          year: document.getElementById("year").value,
+          reading: document.getElementById("reading").value
         };
-      } else {
-        tg.sendData(JSON.stringify(data));
-      }
 
-      tg.close();
-    });
+        if (document.getElementById("photo").files.length > 0) {
+          let reader = new FileReader();
+          reader.readAsDataURL(document.getElementById("photo").files[0]);
+          reader.onload = function () {
+            data.photo = reader.result.split(',')[1];
+            tg.sendData(JSON.stringify(data));
+          };
+        } else {
+          tg.sendData(JSON.stringify(data));
+        }
+        tg.close();
+      });
 
     reset.addEventListener("click", () => {
       tg.close();
