@@ -31,16 +31,18 @@
     let submit = document.getElementById("submit");
     let reset = document.getElementById("reset");
 
-    let fullname = document.getElementById("fullname");
-    let phone = document.getElementById("phone");
-    let type = document.getElementById("type");
-    let model = document.getElementById("model");
-    let serial = document.getElementById("serial");
-    let year = document.getElementById("year");
-    let reading = document.getElementById("reading");
+
     tg.expand();
 
     submit.addEventListener("click", () => {
+        let fullname = document.getElementById("fullname");
+        let phone = document.getElementById("phone");
+        let type = document.getElementById("type");
+        let model = document.getElementById("model");
+        let serial = document.getElementById("serial");
+        let year = document.getElementById("year");
+        let reading = document.getElementById("reading");
+        
     document.getElementById("error").interText = '';
     if (fullname.length < 1) {
       document.getElementById("error").interText = 'Ошибка в имени';
