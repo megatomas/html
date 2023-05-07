@@ -22,11 +22,13 @@ form {
   align-items: center;
   width: 90%;
   margin: 0 auto;
+  flex: 1; /* раст€гиваем форму по высоте */
 }
 
 input[type="text"],
-textarea {
-  width: 90%;
+textarea,
+select {
+  width: 100%;
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
@@ -56,6 +58,15 @@ button[type="reset"] {
 
 button[type="submit"] {
   margin-right: 5px; /* добавл€ем отступ между кнопками */
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons button {
+  flex: 1;
 }
 
 #error {
