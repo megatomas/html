@@ -3,49 +3,62 @@ html, body {
 }
 
 body {
-  background-color: #7ECFC0; /* цвет фона страницы */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(to bottom, #99c2a2, #1a4341);
+  border-radius: 10px;
+  height: 100%;
 }
 
 form {
-  max-width: 800px; /* максимальная ширина формы */
-  margin: 0 auto; /* центрируем форму */
-  padding: 20px; /* отступы внутри формы */
-  background: linear-gradient(to bottom, #99c2a2, #1a4341); /* градиент фона формы */
-  border-radius: 10px; /* скругляем углы формы */
-  height: 100%; /* растягиваем форму на всю высоту */
-  display: flex; /* задаем столбцовую ориентацию элементов блока формы */
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 input[type="text"],
 textarea {
-  width: 100%; /* расширяем поля ввода на всю ширину формы */
-  padding: 10px; /* отступы внутри полей ввода */
-  margin: 5px 0; /* отступы между полями ввода */
-  border-radius: 5px; /* скругляем углы полей ввода */
-  border: none; /* убираем границы полей ввода */
-  background-color: #F8F8F8; /* цвет фона полей ввода */
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #F8F8F8;
 }
 
 select {
-  width: 100%; /* расширяем поле выбора на всю ширину формы */
-  padding: 10px; /* отступы внутри поля выбора */
-  margin: 5px 0; /* отступы между полями ввода */
-  border-radius: 5px; /* скругляем углы поля выбора */
-  border: none; /* убираем границы поля выбора */
-  background-color: #F8F8F8; /* цвет фона поля выбора */
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #F8F8F8;
 }
 
 button[type="submit"],
 button[type="reset"] {
-  padding: 10px; /* отступы внутри кнопок */
-  margin: 5px; /* отступы между кнопками */
-  border-radius: 5px; /* скругляем углы кнопок */
-  border: none; /* убираем границы кнопок */
-  background-color: #5B8E7D; /* цвет фона кнопок */
-  color: white; /* цвет текста на кнопках */
+  padding: 10px;
+  margin: 0; /* убираем отступы */
+  border-radius: 5px;
+  border: none;
+  background-color: #5B8E7D;
+  color: white;
+  outline: 2px solid #1a4341;
+}
+
+button[type="submit"] {
+  margin-right: 5px; /* добавляем отступ между кнопками */
 }
 
 #error {
-  color: red; /* цвет сообщения об ошибке */
-  margin-top:
+  color: red;
+  margin-top: 10px;
+}
