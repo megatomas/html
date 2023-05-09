@@ -23,9 +23,20 @@
           <option value="cold_water">Холодная вода</option>
         </select>
         </div>
-        <div>
+        <!-- <div>
         <input type="text" id="model" name="model" placeholder="Модификация">
+        </div> старое значение-->
+        <div>
+        <select id="model" name="model">
+          <option value="">Выберите модификацию</option>
+          <option value="model1">Модель 1</option>
+          <option value="model2">Модель 2</option>
+          <option value="model3">Модель 3</option>
+          <option value="other">Другая</option>
+        </select>
+        <input type="text" id="other_model" name="other_model" placeholder="Введите модификацию" style="display:none;">
         </div>
+
         <div>
         <input type="text" id="serial" inputmode="numeric" name="serial" placeholder="Заводской номер">
         </div>
@@ -42,6 +53,20 @@
         </div>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- добавляет возможность вписать свою модель -->
+    <script>
+    var model_select = document.getElementById("model");
+    var other_model_input = document.getElementById("other_model");
+
+    model_select.addEventListener("change", function() {
+      if (model_select.value == "other") {
+        other_model_input.style.display = "block";
+      } else {
+        other_model_input.style.display = "none";
+      }
+    });
+    </script>
+    <!--  конец добавления свое модели -->
     <script>
       let tg = window.Telegram.WebApp;
       let submit = document.getElementById("submit");
