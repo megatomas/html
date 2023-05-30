@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Форма ввода</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+      .error {
+        border: 2px solid red;
+      }
+    </style>
   </head>
   <body>
     <form enctype="multipart/form-data">
@@ -40,128 +45,135 @@
         </select>
         <input type="text" id="other_model" name="other_model" placeholder="Введите модификацию" style="display:none;">
       </div>
-          <div>
-    <input type="text" id="serial" name="serial" placeholder="Заводской номер">
-  </div>
-  <div>
-    <input type="text" id="year" inputmode="numeric" name="year" placeholder="Год выпуска">
-  </div>
-  <div>
-    <input type="text" id="reading" inputmode="numeric" name="reading" placeholder="Показания">
-  </div>
-  <div id="error"></div>
-  <div class="button-group">
-    <button type="submit" id="submit">Отправить</button>
-    <button type="reset" id="reset" style="margin-left: 10px">Отмена</button>
-  </div>
-</form>
+      <div>
+        <input type="text" id="serial" name="serial" placeholder="Заводской номер">
+      </div>
+      <div>
+        <input type="text" id="year" inputmode="numeric" name="year" placeholder="Год выпуска">
+      </div>
+      <div>
+        <input type="text" id="reading" inputmode="numeric" name="reading" placeholder="Показания">
+      </div>
+      <div id="error"></div>
+      <div class="button-group">
+        <button type="submit" id="submit">Отправить</button>
+        <button type="reset" id="reset" style="margin-left: 10px">Отмена</button>
+      </div>
+    </form>
 
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<!-- добавляет возможность вписать свою модель -->
-<script>
-  var model_select = document.getElementById("model");
-  var other_model_input = document.getElementById("other_model");
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- добавляет возможность вписать свою модель -->
+    <script>
+      var model_select = document.getElementById("model");
+      var other_model_input = document.getElementById("other_model");
 
-  model_select.addEventListener("change", function() {
-    if (model_select.value == "other") {
-      other_model_input.style.display = "block";
-    } else {
-      other_model_input.style.display = "none";
-    }
-  });
-</script>
-<!-- конец добавления своей модели -->
-<script>
-  let tg = window.Telegram.WebApp;
-  let submit = document.getElementById("submit");
-  let reset = document.getElementById("reset");
-  tg.expand();
+      model_select.addEventListener("change", function() {
+        if (model_select.value == "other") {
+          other_model_input.style.display = "block";
+        } else {
+          other_model_input.style.display = "none";
+        }
+      });
+    </script>
+    <!-- конец добавления своей модели -->
+    <script>
+      let tg = window.Telegram.WebApp;
+      let submit = document.getElementById("submit");
+      let reset = document.getElementById("reset");
+      tg.expand();
 
-  submit.addEventListener("click", () => {
-    let fullname = document.getElementById("fullname").value;
-    let address = document.getElementById("address").value;
-    let phone = document.getElementById("phone").value;
-    let type = document.getElementById("type").value;
-    let model = document.getElementById("model").value;
-    let serial = document.getElementById("serial").value;
-    let year = document.getElementById("year").value;
-    let reading = document.getElementById("reading").value;
-    let other_model = document.getElementById("other_model").value;
-    document.getElementById("error").innerText = ""; // очищаем сообщение об ошибке
+      submit.addEventListener("click", (event) => {
+  event.preventDefault(); // Отменить отправку формы для контроля
 
-    if (fullname.length < 1) {
-      showAlert("Пожалуйста, введите имя клиента");
-      return;
-    }
-    if (address.length < 1) {
-      showAlert("Пожалуйста, введите адрес");
-      return;
-    }
-    if (phone.length !== 12 || !/^\+7\d{10}$/.test(phone)) {
-      showAlert("Пожалуйста, введите корректный номер телефона");
-      return;
-    }
-    if (model === "other") {
-      if (other_model.length < 1) {
-        showAlert("Пожалуйста, введите модификацию");
-        return;
-      }
-      model = other_model;
-    }
-    if (model.length < 1) {
-      showAlert("Пожалуйста, введите модификацию");
-      return;
-    }
-    if (serial.length < 1) {
-      showAlert("Пожалуйста, введите заводской номер");
-      return;
-    }
-    if (year.length < 1) {
-      showAlert("Пожалуйста, введите год выпуска");
-      return;
-    }
-    if (reading.length < 1) {
-      showAlert("Пожалуйста, введите показания");
-      return;
-    }
+  let fullname = document.getElementById("fullname");
+  let address = document.getElementById("address");
+  let phone = document.getElementById("phone");
+  let model = document.getElementById("model");
+  let serial = document.getElementById("serial");
+  let year = document.getElementById("year");
+  let reading = document.getElementById("reading");
+  let other_model = document.getElementById("other_model");
+  document.getElementById("error").innerText = ""; // Очищаем сообщение об ошибке
 
-    let data = {
-      fullname: fullname,
-      address: address,
-      phone: phone,
-      type: type,
-      model: model,
-      serial: serial,
-      year: year,
-      reading: reading,
-    };
+  let invalidFields = []; // Список неправильно заполненных полей
 
-    tg.sendData(JSON.stringify(data));
-    tg.close();
-  });
-
-  reset.addEventListener("click", () => {
-    // Отмена сброса формы при выводе ошибки
-    event.preventDefault();
-    tg.close();
-  });
-
-  // Скрипт для показа всплывающего алерта
-  function showAlert(message) {
-    var alertContainer = document.createElement("div");
-    alertContainer.classList.add("alert");
-    alertContainer.innerText = message;
-
-    var body = document.getElementsByTagName("body")[0];
-    body.appendChild(alertContainer);
-
-    setTimeout(function() {
-      alertContainer.remove();
-    }, 3000);
-
-    // Подтверждение пользователем
-    confirm("Вы ввели не корректные заддые, пожалуйста заполните все данные корректно и снова нажмите кнопку отправить");
+  if (fullname.value.trim() === "") {
+    fullname.classList.add("error");
+    invalidFields.push("Клиент");
+  } else {
+    fullname.classList.remove("error");
   }
-</script>
+
+  if (address.value.trim() === "") {
+    address.classList.add("error");
+    invalidFields.push("Адрес");
+  } else {
+    address.classList.remove("error");
+  }
+
+  if (phone.value.trim() === "" || !/^\+7\d{10}$/.test(phone.value)) {
+    phone.classList.add("error");
+    invalidFields.push("Телефон");
+  } else {
+    phone.classList.remove("error");
+  }
+
+  if (model.value === "other") {
+    if (other_model.value.trim() === "") {
+      other_model.classList.add("error");
+      invalidFields.push("Модификация");
+    } else {
+      other_model.classList.remove("error");
+      model.value = other_model.value; // Присвоить значение из поля "Другая"
+    }
+  } else {
+    other_model.classList.remove("error");
+  }
+
+  if (serial.value.trim() === "") {
+    serial.classList.add("error");
+    invalidFields.push("Заводской номер");
+  } else {
+    serial.classList.remove("error");
+  }
+
+  if (year.value.trim() === "") {
+    year.classList.add("error");
+    invalidFields.push("Год выпуска");
+  } else {
+    year.classList.remove("error");
+  }
+
+  if (reading.value.trim() === "") {
+    reading.classList.add("error");
+    invalidFields.push("Показания");
+  } else {
+    reading.classList.remove("error");
+  }
+
+  if (invalidFields.length > 0) {
+    document.getElementById("error").innerText = "Пожалуйста, заполните следующие поля корректно: " + invalidFields.join(", ");
+    return;
+  }
+
+  let data = {
+    fullname: fullname.value,
+    address: address.value,
+    phone: phone.value,
+    model: model.value,
+    serial: serial.value,
+    year: year.value,
+    reading: reading.value,
+  };
+
+  tg.sendData(JSON.stringify(data));
+  tg.close();
+});
+
+
+      reset.addEventListener("click", () => {
+        tg.close();
+      });
+    </script>
   </body>
 </html>
