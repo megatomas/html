@@ -29,16 +29,16 @@
         <div>
         <select id="model" name="model">
           <option value="">Выберите модификацию</option>
-          <option value="model1">Модель 1</option>
-          <option value="model2">Модель 2</option>
-          <option value="model3">Модель 3</option>
-          <option value="model4">Модель 4</option>
-          <option value="model5">Модель 5</option>
-          <option value="model6">Модель 6</option>
-          <option value="model7">Модель 7</option>
-          <option value="model8">Модель 8</option>
-          <option value="model9">Модель 9</option>
-          <option value="model10">Модель 10</option>
+          <option value="model1">СГВ-15</option>
+          <option value="model2">СВКМ-15</option>
+          <option value="model3">СВК-15-3-2</option>
+          <option value="model4">VLF-U</option>
+          <option value="model5">СВК-15</option>
+          <option value="model6">ВСКМ 90-15</option>
+          <option value="model7">СВ-15</option>
+          <option value="model8">СВУ-15</option>
+          <option value="model9">VLF-R</option>
+          <option value="model10">СВК-15-1,5</option>
           <option value="other">Другая</option>
         </select>
         <input type="text" id="other_model" name="other_model" placeholder="Введите модификацию" style="display:none;">
@@ -73,7 +73,7 @@
       }
     });
     </script>
-    <!--  конец добавления свое модели -->
+    <!-- конец добавления своей модели -->
     <script>
       let tg = window.Telegram.WebApp;
       let submit = document.getElementById("submit");
@@ -81,65 +81,64 @@
       tg.expand();
 
     submit.addEventListener("click", () => {
-  let fullname = document.getElementById("fullname").value;
-  let address = document.getElementById("address").value;
-  let phone = document.getElementById("phone").value;
-  let type = document.getElementById("type").value;
-  let model = document.getElementById("model").value;
-  let serial = document.getElementById("serial").value;
-  let year = document.getElementById("year").value;
-  let reading = document.getElementById("reading").value;
-  let other_model = document.getElementById("other_model").value;
-  document.getElementById("error").innerText = ""; // очищаем сообщение об ошибке
-  if (fullname.length < 1) {
-    document.getElementById("error").innerText = "Пожалуйста, введите имя клиента";
-    return;
-  }
-  if (address.length < 1) {
-    document.getElementById("error").innerText = "Пожалуйста, введите адрес";
-    return;
-  }
-  if (phone.length !== 12 || !/^\+7\d{10}$/.test(phone)) {
-    document.getElementById("error").innerText = "Пожалуйста, введите корректный номер телефона";
-    return;
-  }
-  if (model === "other") {
-    if (other_model.length < 1) {
-      document.getElementById("error").innerText = "Пожалуйста, введите модификацию";
-      return;
-    }
-    model = other_model;
-  }
-  if (model.length < 1) {
-    document.getElementById("error").innerText = "Пожалуйста, введите модификацию";
-    return;
-  }
-  if (serial.length < 1) {
-    document.getElementById("error").innerText = "Пожалуйста, введите заводской номер";
-    return;
-  }
-  if (year.length < 1) {
-    document.getElementById("error").innerText = "Пожалуйста, введите год выпуска";
-    return;
-  }
-  if (reading.length < 1) {
-    document.getElementById("error").innerText = "Пожалуйста, введите показания";
-    return;
-  }
-  let data = {
-    fullname: fullname,
-    address: address,
-    phone: phone,
-    type: type,
-    model: model,
-    serial: serial,
-    year: year,
-    reading: reading,
-  };
-  tg.sendData(JSON.stringify(data));
-  tg.close();
-});
-
+      let fullname = document.getElementById("fullname").value;
+      let address = document.getElementById("address").value;
+      let phone = document.getElementById("phone").value;
+      let type = document.getElementById("type").value;
+      let model = document.getElementById("model").value;
+      let serial = document.getElementById("serial").value;
+      let year = document.getElementById("year").value;
+      let reading = document.getElementById("reading").value;
+      let other_model = document.getElementById("other_model").value;
+      document.getElementById("error").innerText = ""; // очищаем сообщение об ошибке
+      if (fullname.length < 1) {
+        document.getElementById("error").innerText = "Пожалуйста, введите имя клиента";
+        return;
+      }
+      if (address.length < 1) {
+        document.getElementById("error").innerText = "Пожалуйста, введите адрес";
+        return;
+      }
+      if (phone.length !== 12 || !/^\+7\d{10}$/.test(phone)) {
+        document.getElementById("error").innerText = "Пожалуйста, введите корректный номер телефона";
+        return;
+      }
+      if (model === "other") {
+        if (other_model.length < 1) {
+          document.getElementById("error").innerText = "Пожалуйста, введите модификацию";
+          return;
+        }
+        model = other_model;
+      }
+      if (model.length < 1) {
+        document.getElementById("error").innerText = "Пожалуйста, введите модификацию";
+        return;
+      }
+      if (serial.length < 1) {
+        document.getElementById("error").innerText = "Пожалуйста, введите заводской номер";
+        return;
+      }
+      if (year.length < 1) {
+        document.getElementById("error").innerText = "Пожалуйста, введите год выпуска";
+        return;
+      }
+      if (reading.length < 1) {
+        document.getElementById("error").innerText = "Пожалуйста, введите показания";
+        return;
+      }
+      let data = {
+        fullname: fullname,
+        address: address,
+        phone: phone,
+        type: type,
+        model: model,
+        serial: serial,
+        year: year,
+        reading: reading,
+      };
+      tg.sendData(JSON.stringify(data));
+      tg.close();
+    });
 
     reset.addEventListener("click", () => {
       tg.close();
