@@ -24,8 +24,8 @@
       </div>
       <div>
         <select id="type" name="type">
-          <option value="hot_water">Горячая вода</option>
-          <option value="cold_water">Холодная вода</option>
+          <option value="hot_water" name="type">Горячая вода</option>
+          <option value="cold_water" name="type">Холодная вода</option>
         </select>
       </div>
       <div>
@@ -83,93 +83,93 @@
       tg.expand();
 
       submit.addEventListener("click", (event) => {
-  event.preventDefault(); // Отменить отправку формы для контроля
+        event.preventDefault(); // Отменить отправку формы для контроля
 
-  let fullname = document.getElementById("fullname");
-  let address = document.getElementById("address");
-  let phone = document.getElementById("phone");
-  let model = document.getElementById("model");
-  let serial = document.getElementById("serial");
-  let year = document.getElementById("year");
-  let reading = document.getElementById("reading");
-  let other_model = document.getElementById("other_model");
-  document.getElementById("error").innerText = ""; // Очищаем сообщение об ошибке
+        let fullname = document.getElementById("fullname");
+        let address = document.getElementById("address");
+        let phone = document.getElementById("phone");
+        let model = document.getElementById("model");
+        let serial = document.getElementById("serial");
+        let year = document.getElementById("year");
+        let reading = document.getElementById("reading");
+        let other_model = document.getElementById("other_model");
+        document.getElementById("error").innerText = ""; // Очищаем сообщение об ошибке
 
-  let invalidFields = []; // Список неправильно заполненных полей
+        let invalidFields = []; // Список неправильно заполненных полей
 
-  if (fullname.value.trim() === "") {
-    fullname.classList.add("error");
-    invalidFields.push("Клиент");
-  } else {
-    fullname.classList.remove("error");
-  }
+        if (fullname.value.trim() === "") {
+          fullname.classList.add("error");
+          invalidFields.push("Клиент");
+        } else {
+          fullname.classList.remove("error");
+        }
 
-  if (address.value.trim() === "") {
-    address.classList.add("error");
-    invalidFields.push("Адрес");
-  } else {
-    address.classList.remove("error");
-  }
+        if (address.value.trim() === "") {
+          address.classList.add("error");
+          invalidFields.push("Адрес");
+        } else {
+          address.classList.remove("error");
+        }
 
-  if (phone.value.trim() === "" || !/^\+7\d{10}$/.test(phone.value)) {
-    phone.classList.add("error");
-    invalidFields.push("Телефон");
-  } else {
-    phone.classList.remove("error");
-  }
+        if (phone.value.trim() === "" || !/^\+7\d{10}$/.test(phone.value)) {
+          phone.classList.add("error");
+          invalidFields.push("Телефон");
+        } else {
+          phone.classList.remove("error");
+        }
 
-  if (model.value === "other") {
-    if (other_model.value.trim() === "") {
-      other_model.classList.add("error");
-      invalidFields.push("Модификация");
-    } else {
-      other_model.classList.remove("error");
-      model.value = other_model.value; // Присвоить значение из поля "Другая"
-    }
-  } else {
-    other_model.classList.remove("error");
-  }
+        if (model.value === "other") {
+          if (other_model.value.trim() === "") {
+            other_model.classList.add("error");
+            invalidFields.push("Модификация");
+          } else {
+            other_model.classList.remove("error");
+            model.value = other_model.value; // Присвоить значение из поля "Другая"
+          }
+        } else {
+          other_model.classList.remove("error");
+        }
 
-  if (serial.value.trim() === "") {
-    serial.classList.add("error");
-    invalidFields.push("Заводской номер");
-  } else {
-    serial.classList.remove("error");
-  }
+        if (serial.value.trim() === "") {
+          serial.classList.add("error");
+          invalidFields.push("Заводской номер");
+        } else {
+          serial.classList.remove("error");
+        }
 
-  if (year.value.trim() === "") {
-    year.classList.add("error");
-    invalidFields.push("Год выпуска");
-  } else {
-    year.classList.remove("error");
-  }
+        if (year.value.trim() === "") {
+          year.classList.add("error");
+          invalidFields.push("Год выпуска");
+        } else {
+          year.classList.remove("error");
+        }
 
-  if (reading.value.trim() === "") {
-    reading.classList.add("error");
-    invalidFields.push("Показания");
-  } else {
-    reading.classList.remove("error");
-  }
+        if (reading.value.trim() === "") {
+          reading.classList.add("error");
+          invalidFields.push("Показания");
+        } else {
+          reading.classList.remove("error");
+        }
 
-  if (invalidFields.length > 0) {
-    document.getElementById("error").innerText = "Пожалуйста, заполните следующие поля корректно: " + invalidFields.join(", ");
-    return;
-  }
+        if (invalidFields.length > 0) {
+          document.getElementById("error").innerText = "Пожалуйста, заполните следующие поля корректно: " + invalidFields.join(", ");
+          return;
+        }
 
-  let data = {
-    fullname: fullname.value,
-    address: address.value,
-    phone: phone.value,
-    model: model.value,
-    serial: serial.value,
-    year: year.value,
-    reading: reading.value,
-  };
+        let data = {
+          fullname: fullname.value,
+          address: address.value,
+          phone: phone.value,
+          type: model_select.value,
+          model: model.value,
+          serial: serial.value,
+          year: year.value,
+          reading: reading.value,
+        };
 
-  tg.sendData(JSON.stringify(data));
-  tg.close();
-});
-
+        tg.sendData(JSON.stringify(data));
+        tg.close();
+      });
 
       reset.addEventListener("click", () => {
         tg.close();
