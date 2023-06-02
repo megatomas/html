@@ -68,6 +68,13 @@
       let reset = document.getElementById("reset");
       let model_select = document.getElementById("model");
       let other_model_input = document.getElementById("other_model");
+      model_select.addEventListener("change", function() {
+        if (model_select.value === "other") {
+          other_model_input.style.display = "block";
+        } else {
+          other_model_input.style.display = "none";
+        }
+      });
       let type_select = document.getElementById("type");
       tg.expand();
 
